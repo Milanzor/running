@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Milan — Marathon Progress</title>
+  <meta name="description" content="Training dashboard: weekly volume, VO2max, race predictor, and long-run progression toward a sub-3:30 marathon." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏃</text></svg>" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="page-head">
+      <h1>Milan's Marathon Build</h1>
+      <p class="subtitle">Training toward a sub‑3:30 marathon — Sunday 30 Aug 2026</p>
+    </header>
+
+    <section class="hero" id="hero" aria-label="Key stats">
+      <div class="stat-tile" id="tile-countdown">
+        <span class="stat-label">Race day</span>
+        <span class="stat-value">—</span>
+        <span class="stat-sub"></span>
+      </div>
+      <div class="stat-tile" id="tile-vo2max">
+        <span class="stat-label">VO2max</span>
+        <span class="stat-value">—</span>
+        <span class="stat-sub"></span>
+      </div>
+      <div class="stat-tile" id="tile-predicted">
+        <span class="stat-label">Predicted marathon</span>
+        <span class="stat-value">—</span>
+        <span class="stat-sub"></span>
+      </div>
+      <div class="stat-tile" id="tile-goal">
+        <span class="stat-label">A-goal</span>
+        <span class="stat-value">—</span>
+        <span class="stat-sub"></span>
+      </div>
+    </section>
+
+    <section class="race-splits" id="race-splits" aria-label="Current race predictions">
+      <div class="split-chip"><span class="split-dist">5K</span><span class="split-time" id="split-5k">—</span></div>
+      <div class="split-chip"><span class="split-dist">10K</span><span class="split-time" id="split-10k">—</span></div>
+      <div class="split-chip"><span class="split-dist">Half</span><span class="split-time" id="split-half">—</span></div>
+      <div class="split-chip"><span class="split-dist">Marathon</span><span class="split-time" id="split-marathon">—</span></div>
+    </section>
+
+    <section class="panel viz-root" data-chart="volume">
+      <div class="panel-head">
+        <h2>Weekly volume</h2>
+        <p class="panel-sub">Kilometers per week, with 4-week rolling average</p>
+      </div>
+      <div class="chart-wrap"><svg class="chart" id="chart-volume"></svg></div>
+      <div class="legend" id="legend-volume"></div>
+    </section>
+
+    <section class="panel-grid">
+      <div class="panel viz-root" data-chart="vo2max">
+        <div class="panel-head">
+          <h2>VO2max</h2>
+          <p class="panel-sub">Garmin running VO2max estimate over time</p>
+        </div>
+        <div class="chart-wrap"><svg class="chart" id="chart-vo2max"></svg></div>
+      </div>
+
+      <div class="panel viz-root" data-chart="predictor">
+        <div class="panel-head">
+          <h2>Predicted marathon time</h2>
+          <p class="panel-sub">Garmin race predictor, with the A-goal as a reference line</p>
+        </div>
+        <div class="chart-wrap"><svg class="chart" id="chart-predictor"></svg></div>
+      </div>
+    </section>
+
+    <section class="panel viz-root" data-chart="longrun">
+      <div class="panel-head">
+        <h2>Long-run progression</h2>
+        <p class="panel-sub">Longest run each week, building toward peak long run</p>
+      </div>
+      <div class="chart-wrap"><svg class="chart" id="chart-longrun"></svg></div>
+    </section>
+
+    <section class="panel" id="map-panel">
+      <div class="panel-head">
+        <h2>Latest run</h2>
+        <p class="panel-sub" id="latest-run-sub">—</p>
+      </div>
+      <div id="map"></div>
+    </section>
+
+    <footer class="page-foot">
+      <span id="generated-at"></span>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>

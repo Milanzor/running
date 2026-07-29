@@ -66,8 +66,13 @@ body {
   font-size: 1.6rem;
 }
 .subtitle {
-  margin: 0 0 20px;
+  margin: 0 0 4px;
   color: var(--text-secondary);
+}
+.data-range {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
 }
 
 .hero {
@@ -225,3 +230,35 @@ body {
   padding: 30px 0;
   text-align: center;
 }
+
+.pr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.pr-table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--gridline);
+}
+.pr-table td {
+  padding: 8px;
+  border-bottom: 1px solid var(--gridline);
+}
+.pr-table tr:last-child td { border-bottom: none; }
+.pr-table td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.pr-table td:nth-child(3) {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+.heatmap-cell { cursor: default; }
+.heatmap-label { fill: var(--text-muted); font-size: 9px; }

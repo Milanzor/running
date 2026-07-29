@@ -142,17 +142,27 @@ function renderVolumeChart(weeklyVolume) {
   `;
 }
 
-// --- Generic line chart with optional reference line ---
-function renderLineChart(svgId, points, { yFormat, color, refLine, unitLabel }) {
+// --- Generic line chart with optional reference line / band ---
+function renderLineChart(svgId, points, { yFormat, color, refLine, band, unitLabel, yMin: yMinOverride }) {
   const svg = document.getElementById(svgId);
   const wrap = svg.closest(".chart-wrap");
   if (!points.length) { svg.parentElement.innerHTML = '<p class="no-data">No data yet.</p>'; return; }
 
   const n = points.length;
   const values = points.map((p) => p.y);
-  const maxVal = Math.max(...values, refLine ? refLine.y : 0);
+  const maxVal = Math.max(...values, refLine ? refLine.y : 0, band ? band.yMax : 0);
   const yMax = niceMax(maxVal * 1.1);
   const { plotW, plotH, x0, y0 } = drawFrame(svg, yMax, yFormat);
+
+  if (band) {
+    const yTop = yPos(band.yMax, yMax, plotH, y0);
+    const yBottom = yPos(band.yMin, yMax, plotH, y0);
+    el("rect", {
+      x: x0, y: yTop, width: plotW, height: yBottom - yTop,
+      fill: "var(--good)", opacity: 0.08,
+    }, svg);
+    el("text", { x: CHART_W - PAD.right, y: yTop - 4, class: "tick-label", "text-anchor": "end" }, svg).textContent = band.label;
+  }
 
   if (refLine) {
     const ry = yPos(refLine.y, yMax, plotH, y0);
@@ -212,6 +222,198 @@ function renderLongRunChart(longRun) {
       el("text", { x: cx, y: CHART_H - 6, class: "tick-label", "text-anchor": "middle" }, svg).textContent = fmtDate(w.week_start);
     }
   });
+}
+
+// --- Zone-time distribution: stacked bars (aerobic + anaerobic) ---
+function renderZoneChart(zoneDistribution) {
+  const svg = document.getElementById("chart-zones");
+  const wrap = svg.closest(".chart-wrap");
+  const legend = document.getElementById("legend-zones");
+  if (!zoneDistribution.length) { svg.parentElement.innerHTML = '<p class="no-data">No zone data yet.</p>'; return; }
+
+  const n = zoneDistribution.length;
+  const totals = zoneDistribution.map((w) => w.aerobic_min + w.anaerobic_min);
+  const yMax = niceMax(Math.max(...totals) * 1.15);
+  const { plotW, plotH, x0, y0 } = drawFrame(svg, yMax, (v) => Math.round(v));
+  const GAP = 2;
+
+  const bandW = (plotW / n) * 0.6;
+  zoneDistribution.forEach((w, i) => {
+    const cx = xPos(i, n, plotW, x0);
+    const aerobicTop = yPos(w.aerobic_min, yMax, plotH, y0);
+    const aerobicH = (y0 + plotH) - aerobicTop;
+    const bar1 = el("rect", {
+      x: cx - bandW / 2, y: aerobicTop, width: bandW, height: Math.max(0, aerobicH - GAP / 2),
+      rx: 3, fill: "var(--series-1)", opacity: 0.85,
+    }, svg);
+    bar1.addEventListener("mouseenter", () => {
+      showTooltip(wrap, cx, aerobicTop, `<span class="tooltip-label">Aerobic</span> ${Math.round(w.aerobic_min)} min`);
+    });
+    bar1.addEventListener("mouseleave", () => hideTooltip(wrap));
+
+    const anaerobicTop = yPos(w.aerobic_min + w.anaerobic_min, yMax, plotH, y0);
+    const anaerobicH = aerobicTop - anaerobicTop;
+    if (anaerobicH > 0) {
+      const bar2 = el("rect", {
+        x: cx - bandW / 2, y: anaerobicTop, width: bandW, height: Math.max(0, anaerobicH - GAP / 2),
+        rx: 3, fill: "var(--series-2)", opacity: 0.85,
+      }, svg);
+      bar2.addEventListener("mouseenter", () => {
+        showTooltip(wrap, cx, anaerobicTop, `<span class="tooltip-label">Anaerobic</span> ${Math.round(w.anaerobic_min)} min`);
+      });
+      bar2.addEventListener("mouseleave", () => hideTooltip(wrap));
+    }
+
+    if (i === 0 || i === n - 1 || i % 3 === 0) {
+      el("text", { x: cx, y: CHART_H - 6, class: "tick-label", "text-anchor": "middle" }, svg).textContent = fmtDate(w.week_start);
+    }
+  });
+
+  legend.innerHTML = `
+    <span class="legend-item"><span class="legend-swatch" style="background:var(--series-1)"></span>Aerobic (Z1–Z3)</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:var(--series-2)"></span>Anaerobic (Z4–Z5)</span>
+  `;
+}
+
+// --- Pace by effort: scatter, inverted y-axis (faster = up) ---
+function renderPaceChart(paceByEffort) {
+  const svg = document.getElementById("chart-pace");
+  const wrap = svg.closest(".chart-wrap");
+  const legend = document.getElementById("legend-pace");
+  if (!paceByEffort.length) { svg.parentElement.innerHTML = '<p class="no-data">No pace data yet.</p>'; return; }
+
+  const buckets = [
+    { key: "Easy", color: "var(--series-1)" },
+    { key: "Steady/Threshold", color: "var(--series-2)" },
+    { key: "Hard", color: "var(--series-3)" },
+  ].filter((b) => paceByEffort.some((p) => p.bucket === b.key));
+
+  const dates = [...new Set(paceByEffort.map((p) => p.date))].sort();
+  const n = dates.length;
+  const dateIndex = Object.fromEntries(dates.map((d, i) => [d, i]));
+
+  const paces = paceByEffort.map((p) => p.pace_min_per_km);
+  const yMin = Math.floor(Math.min(...paces) * 2) / 2 - 0.25;
+  const yMax = Math.ceil(Math.max(...paces) * 2) / 2 + 0.25;
+  const range = yMax - yMin;
+
+  svg.setAttribute("viewBox", `0 0 ${CHART_W} ${CHART_H}`);
+  svg.innerHTML = "";
+  const plotW = CHART_W - PAD.left - PAD.right;
+  const plotH = CHART_H - PAD.top - PAD.bottom;
+  const x0 = PAD.left, y0 = PAD.top;
+
+  const ticks = 4;
+  for (let i = 0; i <= ticks; i++) {
+    const v = yMax - (range / ticks) * i; // inverted: top = fastest
+    const y = y0 + (plotH / ticks) * i;
+    el("line", { x1: x0, x2: CHART_W - PAD.right, y1: y, y2: y, class: i === ticks ? "baseline" : "gridline" }, svg);
+    el("text", { x: x0 - 8, y: y + 3, class: "tick-label", "text-anchor": "end" }, svg).textContent = `${v.toFixed(1)}`;
+  }
+
+  const invY = (pace) => y0 + ((pace - yMin) / range) * plotH; // faster (low pace) -> smaller y (top)
+
+  buckets.forEach((b) => {
+    const pts = paceByEffort.filter((p) => p.bucket === b.key);
+    pts.forEach((p) => {
+      const cx = xPos(dateIndex[p.date], n, plotW, x0);
+      const cy = invY(p.pace_min_per_km);
+      const dot = el("circle", { cx, cy, r: 4, fill: b.color, opacity: 0.85 }, svg);
+      dot.addEventListener("mouseenter", () => {
+        const mins = Math.floor(p.pace_min_per_km);
+        const secs = Math.round((p.pace_min_per_km - mins) * 60);
+        showTooltip(wrap, cx, cy, `<span class="tooltip-label">${fmtDate(p.date)} · ${b.key}</span> ${mins}:${String(secs).padStart(2, "0")}/km`);
+      });
+      dot.addEventListener("mouseleave", () => hideTooltip(wrap));
+    });
+  });
+
+  const tickEvery = Math.max(1, Math.floor(n / 6));
+  dates.forEach((d, i) => {
+    if (i % tickEvery === 0 || i === n - 1) {
+      el("text", { x: xPos(i, n, plotW, x0), y: CHART_H - 6, class: "tick-label", "text-anchor": "middle" }, svg).textContent = fmtDate(d);
+    }
+  });
+
+  legend.innerHTML = buckets.map((b) =>
+    `<span class="legend-item"><span class="legend-swatch" style="background:${b.color}"></span>${b.key}</span>`
+  ).join("");
+}
+
+// --- Run calendar heatmap ---
+function renderHeatmap(runDays, dateRange) {
+  const svg = document.getElementById("chart-heatmap");
+  const start = new Date(dateRange.start + "T00:00:00");
+  const end = new Date(dateRange.end + "T00:00:00");
+  const gridStart = new Date(start);
+  gridStart.setDate(gridStart.getDate() - gridStart.getDay() + (gridStart.getDay() === 0 ? -6 : 1)); // back to Monday
+
+  const days = [];
+  for (let d = new Date(gridStart); d <= end; d.setDate(d.getDate() + 1)) {
+    days.push(new Date(d));
+  }
+  const weeks = Math.ceil(days.length / 7);
+  const cell = 13, gap = 3;
+  const width = weeks * (cell + gap) + PAD.left;
+  const height = 7 * (cell + gap) + 10;
+
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.style.height = `${height}px`;
+  svg.innerHTML = "";
+
+  const values = Object.values(runDays);
+  const maxKm = values.length ? Math.max(...values) : 1;
+  const steps = ["#e1e0d9", "#cde2fb", "#86b6ef", "#3987e5", "#184f95"];
+  function colorFor(km) {
+    if (!km) return steps[0];
+    const frac = km / maxKm;
+    if (frac < 0.15) return steps[1];
+    if (frac < 0.4) return steps[2];
+    if (frac < 0.7) return steps[3];
+    return steps[4];
+  }
+
+  let lastMonth = null;
+  days.forEach((d, i) => {
+    const week = Math.floor(i / 7);
+    const dow = (d.getDay() + 6) % 7; // Monday = 0
+    const iso = d.toISOString().slice(0, 10);
+    const km = runDays[iso] || 0;
+    const x = PAD.left + week * (cell + gap);
+    const y = dow * (cell + gap);
+
+    if (dow === 0 && d.getMonth() !== lastMonth && d >= start) {
+      lastMonth = d.getMonth();
+      el("text", { x, y: height - 2, class: "heatmap-label" }, svg).textContent = d.toLocaleDateString("en-GB", { month: "short" });
+    }
+
+    const rect = el("rect", {
+      x, y, width: cell, height: cell, rx: 3,
+      fill: d < start || d > end ? "transparent" : colorFor(km),
+      class: "heatmap-cell",
+    }, svg);
+    if (d >= start && d <= end) {
+      rect.addEventListener("mouseenter", () => {
+        showTooltip(svg.closest(".chart-wrap"), x + cell / 2, y, `<span class="tooltip-label">${fmtDate(iso)}</span> ${km ? km.toFixed(1) + " km" : "rest"}`);
+      });
+      rect.addEventListener("mouseleave", () => hideTooltip(svg.closest(".chart-wrap")));
+    }
+  });
+}
+
+function renderPrTable(records) {
+  const tbody = document.querySelector("#pr-table tbody");
+  if (!records.length) {
+    tbody.innerHTML = '<tr><td colspan="3" class="no-data">No records yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = records.map((r) => `
+    <tr>
+      <td>${r.label}</td>
+      <td>${r.display}</td>
+      <td>${r.date ? fmtDate(r.date) : "—"}</td>
+    </tr>
+  `).join("");
 }
 
 function renderHero(data) {
@@ -294,8 +496,41 @@ async function main() {
   );
 
   renderLongRunChart(data.long_run_progression);
+
+  renderLineChart(
+    "chart-acwr",
+    data.acwr_history.map((h) => ({ x: h.date, y: h.acwr, display: `${h.acwr} (${h.status})` })),
+    { yFormat: (v) => v.toFixed(1), color: "var(--series-1)", band: { yMin: 0.8, yMax: 1.3, label: "optimal" } }
+  );
+
+  renderLineChart(
+    "chart-hrv",
+    data.hrv_history.map((h) => ({ x: h.date, y: h.hrv, display: `${h.hrv} ms (${h.status})` })),
+    { yFormat: (v) => v.toFixed(0), color: "var(--series-3)" }
+  );
+
+  renderLineChart(
+    "chart-rhr",
+    data.rhr_history.map((h) => ({ x: h.date, y: h.rhr })),
+    { yFormat: (v) => v.toFixed(0), color: "var(--series-2)", unitLabel: " bpm" }
+  );
+
+  renderLineChart(
+    "chart-sleep",
+    data.sleep_history.map((h) => ({ x: h.date, y: h.score, display: `${h.score} (${h.qualifier})` })),
+    { yFormat: (v) => v.toFixed(0), color: "var(--series-1)" }
+  );
+
+  renderZoneChart(data.zone_distribution);
+  renderPaceChart(data.pace_by_effort);
+  renderHeatmap(data.run_days, data.date_range);
+  renderPrTable(data.personal_records);
+
   renderMap(data.latest_run);
 
+  const rangeStart = new Date(data.date_range.start + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  const rangeEnd = new Date(data.date_range.end + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  document.getElementById("data-range").textContent = `Data covers ${rangeStart} – ${rangeEnd}`;
   document.getElementById("generated-at").textContent = `Data as of ${new Date(data.generated_at).toLocaleString("en-GB")}`;
 }
 

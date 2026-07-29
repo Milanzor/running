@@ -14,6 +14,7 @@
     <header class="page-head">
       <h1>Milan's Marathon Build</h1>
       <p class="subtitle">Training toward a sub‑3:30 marathon — Sunday 30 Aug 2026</p>
+      <p class="data-range" id="data-range"></p>
     </header>
 
     <section class="hero" id="hero" aria-label="Key stats">
@@ -79,6 +80,77 @@
         <p class="panel-sub">Longest run each week, building toward peak long run</p>
       </div>
       <div class="chart-wrap"><svg class="chart" id="chart-longrun"></svg></div>
+    </section>
+
+    <section class="panel viz-root" data-chart="load">
+      <div class="panel-head">
+        <h2>Training load (ACWR)</h2>
+        <p class="panel-sub">Acute:chronic workload ratio — the 0.8–1.3 band is the optimal injury-risk zone</p>
+      </div>
+      <div class="chart-wrap"><svg class="chart" id="chart-acwr"></svg></div>
+    </section>
+
+    <section class="panel-grid">
+      <div class="panel viz-root" data-chart="hrv">
+        <div class="panel-head">
+          <h2>HRV</h2>
+          <p class="panel-sub">7-day average, weekly sample</p>
+        </div>
+        <div class="chart-wrap"><svg class="chart" id="chart-hrv"></svg></div>
+      </div>
+
+      <div class="panel viz-root" data-chart="rhr">
+        <div class="panel-head">
+          <h2>Resting heart rate</h2>
+          <p class="panel-sub">Weekly sample</p>
+        </div>
+        <div class="chart-wrap"><svg class="chart" id="chart-rhr"></svg></div>
+      </div>
+    </section>
+
+    <section class="panel viz-root" data-chart="sleep">
+      <div class="panel-head">
+        <h2>Sleep score</h2>
+        <p class="panel-sub">Garmin overall sleep score, weekly sample</p>
+      </div>
+      <div class="chart-wrap"><svg class="chart" id="chart-sleep"></svg></div>
+    </section>
+
+    <section class="panel viz-root" data-chart="zones">
+      <div class="panel-head">
+        <h2>Zone-time distribution</h2>
+        <p class="panel-sub">Aerobic (Z1–Z3) vs anaerobic (Z4–Z5) minutes per week</p>
+      </div>
+      <div class="chart-wrap"><svg class="chart" id="chart-zones"></svg></div>
+      <div class="legend" id="legend-zones"></div>
+    </section>
+
+    <section class="panel viz-root" data-chart="pace">
+      <div class="panel-head">
+        <h2>Pace by effort</h2>
+        <p class="panel-sub">Per-run average pace, grouped by average-HR effort bucket (faster is up)</p>
+      </div>
+      <div class="chart-wrap"><svg class="chart" id="chart-pace"></svg></div>
+      <div class="legend" id="legend-pace"></div>
+    </section>
+
+    <section class="panel" id="heatmap-panel">
+      <div class="panel-head">
+        <h2>Run calendar</h2>
+        <p class="panel-sub">Daily distance over the data window</p>
+      </div>
+      <div class="chart-wrap"><svg class="chart" id="chart-heatmap" style="height:120px"></svg></div>
+    </section>
+
+    <section class="panel" id="pr-panel">
+      <div class="panel-head">
+        <h2>Personal records</h2>
+        <p class="panel-sub">All-time bests, per Garmin Connect</p>
+      </div>
+      <table class="pr-table" id="pr-table">
+        <thead><tr><th>Distance</th><th>Time</th><th>Set on</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </section>
 
     <section class="panel" id="map-panel">

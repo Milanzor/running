@@ -1,5 +1,9 @@
 {
-  "generated_at": "2026-07-29T12:39:15+02:00",
+  "generated_at": "2026-07-29T13:06:03+02:00",
+  "date_range": {
+    "start": "2026-03-11",
+    "end": "2026-07-29"
+  },
   "athlete": {
     "name": "Milan",
     "race_name": "Marathon",
@@ -1407,6 +1411,439 @@
       "km": 9.38
     }
   ],
+  "zone_distribution": [
+    {
+      "week_start": "2026-03-09",
+      "aerobic_min": 125.7,
+      "anaerobic_min": 46.6
+    },
+    {
+      "week_start": "2026-03-16",
+      "aerobic_min": 134.5,
+      "anaerobic_min": 62.8
+    },
+    {
+      "week_start": "2026-03-23",
+      "aerobic_min": 123.4,
+      "anaerobic_min": 36.5
+    },
+    {
+      "week_start": "2026-03-30",
+      "aerobic_min": 108.6,
+      "anaerobic_min": 18.7
+    },
+    {
+      "week_start": "2026-04-06",
+      "aerobic_min": 238.9,
+      "anaerobic_min": 155.8
+    },
+    {
+      "week_start": "2026-04-27",
+      "aerobic_min": 118.0,
+      "anaerobic_min": 30.3
+    },
+    {
+      "week_start": "2026-05-04",
+      "aerobic_min": 122.8,
+      "anaerobic_min": 18.6
+    },
+    {
+      "week_start": "2026-05-11",
+      "aerobic_min": 139.7,
+      "anaerobic_min": 10.8
+    },
+    {
+      "week_start": "2026-05-18",
+      "aerobic_min": 86.0,
+      "anaerobic_min": 90.2
+    },
+    {
+      "week_start": "2026-05-25",
+      "aerobic_min": 288.5,
+      "anaerobic_min": 26.7
+    },
+    {
+      "week_start": "2026-06-01",
+      "aerobic_min": 55.9,
+      "anaerobic_min": 12.5
+    },
+    {
+      "week_start": "2026-06-08",
+      "aerobic_min": 137.0,
+      "anaerobic_min": 47.4
+    },
+    {
+      "week_start": "2026-06-15",
+      "aerobic_min": 119.2,
+      "anaerobic_min": 70.6
+    },
+    {
+      "week_start": "2026-06-22",
+      "aerobic_min": 92.6,
+      "anaerobic_min": 97.0
+    },
+    {
+      "week_start": "2026-06-29",
+      "aerobic_min": 217.3,
+      "anaerobic_min": 16.9
+    },
+    {
+      "week_start": "2026-07-06",
+      "aerobic_min": 193.9,
+      "anaerobic_min": 24.4
+    },
+    {
+      "week_start": "2026-07-13",
+      "aerobic_min": 52.4,
+      "anaerobic_min": 6.3
+    },
+    {
+      "week_start": "2026-07-20",
+      "aerobic_min": 244.2,
+      "anaerobic_min": 62.1
+    },
+    {
+      "week_start": "2026-07-27",
+      "aerobic_min": 49.4,
+      "anaerobic_min": 0.3
+    }
+  ],
+  "pace_by_effort": [
+    {
+      "date": "2026-03-12",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.25
+    },
+    {
+      "date": "2026-03-15",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.52
+    },
+    {
+      "date": "2026-03-18",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.64
+    },
+    {
+      "date": "2026-03-22",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.3
+    },
+    {
+      "date": "2026-03-25",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.61
+    },
+    {
+      "date": "2026-03-29",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.37
+    },
+    {
+      "date": "2026-03-31",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.59
+    },
+    {
+      "date": "2026-04-04",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.16
+    },
+    {
+      "date": "2026-04-06",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.48
+    },
+    {
+      "date": "2026-04-08",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.94
+    },
+    {
+      "date": "2026-04-11",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.92
+    },
+    {
+      "date": "2026-04-12",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.64
+    },
+    {
+      "date": "2026-04-28",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.81
+    },
+    {
+      "date": "2026-04-28",
+      "bucket": "Easy",
+      "pace_min_per_km": 7.64
+    },
+    {
+      "date": "2026-04-29",
+      "bucket": "Easy",
+      "pace_min_per_km": 6.64
+    },
+    {
+      "date": "2026-04-29",
+      "bucket": "Easy",
+      "pace_min_per_km": 6.95
+    },
+    {
+      "date": "2026-05-01",
+      "bucket": "Easy",
+      "pace_min_per_km": 6.53
+    },
+    {
+      "date": "2026-05-02",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.45
+    },
+    {
+      "date": "2026-05-06",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.13
+    },
+    {
+      "date": "2026-05-09",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.92
+    },
+    {
+      "date": "2026-05-10",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.29
+    },
+    {
+      "date": "2026-05-12",
+      "bucket": "Easy",
+      "pace_min_per_km": 6.26
+    },
+    {
+      "date": "2026-05-14",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.65
+    },
+    {
+      "date": "2026-05-17",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.94
+    },
+    {
+      "date": "2026-05-17",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.97
+    },
+    {
+      "date": "2026-05-19",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.44
+    },
+    {
+      "date": "2026-05-19",
+      "bucket": "Easy",
+      "pace_min_per_km": 8.15
+    },
+    {
+      "date": "2026-05-21",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.2
+    },
+    {
+      "date": "2026-05-23",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.94
+    },
+    {
+      "date": "2026-05-25",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.24
+    },
+    {
+      "date": "2026-05-27",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.75
+    },
+    {
+      "date": "2026-05-28",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.25
+    },
+    {
+      "date": "2026-05-31",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.04
+    },
+    {
+      "date": "2026-06-01",
+      "bucket": "Easy",
+      "pace_min_per_km": 6.85
+    },
+    {
+      "date": "2026-06-04",
+      "bucket": "Easy",
+      "pace_min_per_km": 6.41
+    },
+    {
+      "date": "2026-06-08",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 4.64
+    },
+    {
+      "date": "2026-06-11",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.26
+    },
+    {
+      "date": "2026-06-14",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.13
+    },
+    {
+      "date": "2026-06-16",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.25
+    },
+    {
+      "date": "2026-06-20",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.26
+    },
+    {
+      "date": "2026-06-21",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 4.96
+    },
+    {
+      "date": "2026-06-23",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.43
+    },
+    {
+      "date": "2026-06-27",
+      "bucket": "Steady/Threshold",
+      "pace_min_per_km": 5.14
+    },
+    {
+      "date": "2026-06-29",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.51
+    },
+    {
+      "date": "2026-07-01",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.34
+    },
+    {
+      "date": "2026-07-05",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.09
+    },
+    {
+      "date": "2026-07-07",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.57
+    },
+    {
+      "date": "2026-07-09",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.0
+    },
+    {
+      "date": "2026-07-10",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.64
+    },
+    {
+      "date": "2026-07-11",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.55
+    },
+    {
+      "date": "2026-07-16",
+      "bucket": "Easy",
+      "pace_min_per_km": 4.9
+    },
+    {
+      "date": "2026-07-17",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.09
+    },
+    {
+      "date": "2026-07-21",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.1
+    },
+    {
+      "date": "2026-07-23",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.28
+    },
+    {
+      "date": "2026-07-26",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.08
+    },
+    {
+      "date": "2026-07-28",
+      "bucket": "Easy",
+      "pace_min_per_km": 5.35
+    }
+  ],
+  "run_days": {
+    "2026-07-28": 9.38473046875,
+    "2026-07-26": 32.006810546875,
+    "2026-07-23": 12.43176953125,
+    "2026-07-21": 16.0051396484375,
+    "2026-07-17": 1.926260009765625,
+    "2026-07-16": 10.2539404296875,
+    "2026-07-11": 14.999599609375,
+    "2026-07-10": 7.63383984375,
+    "2026-07-09": 9.99925,
+    "2026-07-07": 8.395759765625,
+    "2026-07-05": 27.0898203125,
+    "2026-07-01": 9.6722900390625,
+    "2026-06-29": 8.4564697265625,
+    "2026-06-27": 25.0083203125,
+    "2026-06-23": 11.461599609375,
+    "2026-06-21": 16.99719921875,
+    "2026-06-20": 10.126490234375,
+    "2026-06-16": 10.2091796875,
+    "2026-06-14": 18.014349609375,
+    "2026-06-11": 9.5970498046875,
+    "2026-06-08": 9.4017001953125,
+    "2026-06-04": 4.18297021484375,
+    "2026-06-01": 7.68485986328125,
+    "2026-05-31": 21.1215390625,
+    "2026-05-28": 13.50576953125,
+    "2026-05-27": 8.34825,
+    "2026-05-25": 17.748439453125,
+    "2026-05-23": 10.7657802734375,
+    "2026-05-21": 12.512349609375,
+    "2026-05-19": 8.43525,
+    "2026-05-17": 7.524010009765625,
+    "2026-05-14": 13.2426796875,
+    "2026-05-12": 5.3635498046875,
+    "2026-05-10": 9.666140014648438,
+    "2026-05-09": 9.4969697265625,
+    "2026-05-06": 7.1910400390625,
+    "2026-05-02": 10.002169921875,
+    "2026-05-01": 2.969280029296875,
+    "2026-04-29": 3.6823798828124996,
+    "2026-04-28": 8.286460205078125,
+    "2026-04-12": 42.49073046875,
+    "2026-04-11": 5.2828798828125,
+    "2026-04-08": 7.02702978515625,
+    "2026-04-06": 15.37083984375,
+    "2026-04-04": 10.2106103515625,
+    "2026-03-31": 13.55783984375,
+    "2026-03-29": 20.0039609375,
+    "2026-03-25": 9.602330078125,
+    "2026-03-22": 30.014099609375,
+    "2026-03-18": 7.012580078125,
+    "2026-03-15": 24.4970390625,
+    "2026-03-12": 7.25133984375
+  },
   "latest_run": {
     "activity_id": 23766504589,
     "date": "2026-07-28",
@@ -3016,5 +3453,451 @@
         6.444641
       ]
     ]
-  }
+  },
+  "personal_records": [
+    {
+      "label": "1 km",
+      "display": "3:46",
+      "activity_name": "Hoogeveen Hardlopen",
+      "date": "2024-03-29"
+    },
+    {
+      "label": "1 mile",
+      "display": "6:18",
+      "activity_name": "Hoogeveen - Erflanden Run",
+      "date": "2024-05-15"
+    },
+    {
+      "label": "5K",
+      "display": "19:52",
+      "activity_name": "De Wolden - Duo Sprint De Waterlelie 500m+5.2km",
+      "date": "2023-06-14"
+    },
+    {
+      "label": "10K",
+      "display": "44:06",
+      "activity_name": "Enschede - Enschede Marathon (Halve Marathon)",
+      "date": "2024-04-21"
+    },
+    {
+      "label": "Half marathon",
+      "display": "1:35:01",
+      "activity_name": "Enschede - Enschede Marathon (Halve Marathon)",
+      "date": "2024-04-21"
+    },
+    {
+      "label": "Marathon",
+      "display": "3:33:40",
+      "activity_name": "Amsterdam - TCS Amsterdam Marathon",
+      "date": "2023-10-15"
+    },
+    {
+      "label": "Longest run",
+      "display": "42.88 km",
+      "activity_name": "Amsterdam - TCS Amsterdam Marathon",
+      "date": "2023-10-15"
+    }
+  ],
+  "acwr_history": [
+    {
+      "date": "2026-03-09",
+      "acwr": 1.2,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-03-16",
+      "acwr": 1.2,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-03-23",
+      "acwr": 1.3,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-03-30",
+      "acwr": 1.1,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-04-06",
+      "acwr": 1.3,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-04-13",
+      "acwr": 1.5,
+      "status": "HIGH"
+    },
+    {
+      "date": "2026-04-20",
+      "acwr": 0.3,
+      "status": "LOW"
+    },
+    {
+      "date": "2026-05-04",
+      "acwr": 1.4,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-05-11",
+      "acwr": 1.3,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-05-18",
+      "acwr": 1.0,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-05-25",
+      "acwr": 1.6,
+      "status": "HIGH"
+    },
+    {
+      "date": "2026-06-01",
+      "acwr": 1.3,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-06-08",
+      "acwr": 0.8,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-06-15",
+      "acwr": 0.9,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-06-22",
+      "acwr": 1.2,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-06-29",
+      "acwr": 1.0,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-07-06",
+      "acwr": 0.8,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-07-13",
+      "acwr": 0.9,
+      "status": "OPTIMAL"
+    },
+    {
+      "date": "2026-07-20",
+      "acwr": 0.4,
+      "status": "LOW"
+    },
+    {
+      "date": "2026-07-27",
+      "acwr": 1.2,
+      "status": "OPTIMAL"
+    }
+  ],
+  "hrv_history": [
+    {
+      "date": "2026-03-09",
+      "hrv": 53,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-03-16",
+      "hrv": 53,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-03-23",
+      "hrv": 54,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-03-30",
+      "hrv": 50,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-04-06",
+      "hrv": 52,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-04-13",
+      "hrv": 54,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-04-20",
+      "hrv": 52,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-04-27",
+      "hrv": 51,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-05-04",
+      "hrv": 47,
+      "status": "LOW"
+    },
+    {
+      "date": "2026-05-11",
+      "hrv": 49,
+      "status": "UNBALANCED"
+    },
+    {
+      "date": "2026-05-18",
+      "hrv": 54,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-05-25",
+      "hrv": 55,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-06-01",
+      "hrv": 61,
+      "status": "UNBALANCED"
+    },
+    {
+      "date": "2026-06-08",
+      "hrv": 56,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-06-15",
+      "hrv": 54,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-06-22",
+      "hrv": 58,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-06-29",
+      "hrv": 63,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-07-06",
+      "hrv": 65,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-07-13",
+      "hrv": 69,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-07-20",
+      "hrv": 57,
+      "status": "BALANCED"
+    },
+    {
+      "date": "2026-07-27",
+      "hrv": 61,
+      "status": "BALANCED"
+    }
+  ],
+  "rhr_history": [
+    {
+      "date": "2026-03-09",
+      "rhr": 44.0
+    },
+    {
+      "date": "2026-03-16",
+      "rhr": 45.0
+    },
+    {
+      "date": "2026-03-23",
+      "rhr": 49.0
+    },
+    {
+      "date": "2026-03-30",
+      "rhr": 47.0
+    },
+    {
+      "date": "2026-04-06",
+      "rhr": 47.0
+    },
+    {
+      "date": "2026-04-13",
+      "rhr": 51.0
+    },
+    {
+      "date": "2026-04-20",
+      "rhr": 51.0
+    },
+    {
+      "date": "2026-04-27",
+      "rhr": 47.0
+    },
+    {
+      "date": "2026-05-04",
+      "rhr": 48.0
+    },
+    {
+      "date": "2026-05-11",
+      "rhr": 47.0
+    },
+    {
+      "date": "2026-05-18",
+      "rhr": 42.0
+    },
+    {
+      "date": "2026-05-25",
+      "rhr": 46.0
+    },
+    {
+      "date": "2026-06-01",
+      "rhr": 45.0
+    },
+    {
+      "date": "2026-06-08",
+      "rhr": 47.0
+    },
+    {
+      "date": "2026-06-15",
+      "rhr": 47.0
+    },
+    {
+      "date": "2026-06-22",
+      "rhr": 44.0
+    },
+    {
+      "date": "2026-06-29",
+      "rhr": 40.0
+    },
+    {
+      "date": "2026-07-06",
+      "rhr": 42.0
+    },
+    {
+      "date": "2026-07-13",
+      "rhr": 41.0
+    },
+    {
+      "date": "2026-07-20",
+      "rhr": 44.0
+    },
+    {
+      "date": "2026-07-27",
+      "rhr": 46.0
+    }
+  ],
+  "sleep_history": [
+    {
+      "date": "2026-03-09",
+      "score": 96,
+      "qualifier": "EXCELLENT"
+    },
+    {
+      "date": "2026-03-16",
+      "score": 86,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-03-23",
+      "score": 82,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-03-30",
+      "score": 80,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-04-06",
+      "score": 81,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-04-13",
+      "score": 50,
+      "qualifier": "POOR"
+    },
+    {
+      "date": "2026-04-20",
+      "score": 71,
+      "qualifier": "FAIR"
+    },
+    {
+      "date": "2026-04-27",
+      "score": 77,
+      "qualifier": "FAIR"
+    },
+    {
+      "date": "2026-05-04",
+      "score": 84,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-05-11",
+      "score": 78,
+      "qualifier": "FAIR"
+    },
+    {
+      "date": "2026-05-18",
+      "score": 95,
+      "qualifier": "EXCELLENT"
+    },
+    {
+      "date": "2026-05-25",
+      "score": 67,
+      "qualifier": "FAIR"
+    },
+    {
+      "date": "2026-06-01",
+      "score": 92,
+      "qualifier": "EXCELLENT"
+    },
+    {
+      "date": "2026-06-08",
+      "score": 86,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-06-15",
+      "score": 80,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-06-22",
+      "score": 87,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-06-29",
+      "score": 84,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-07-06",
+      "score": 91,
+      "qualifier": "EXCELLENT"
+    },
+    {
+      "date": "2026-07-13",
+      "score": 92,
+      "qualifier": "EXCELLENT"
+    },
+    {
+      "date": "2026-07-20",
+      "score": 81,
+      "qualifier": "GOOD"
+    },
+    {
+      "date": "2026-07-27",
+      "score": 73,
+      "qualifier": "FAIR"
+    }
+  ]
 }

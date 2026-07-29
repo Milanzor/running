@@ -171,6 +171,17 @@ function renderLineChart(svgId, points, { yFormat, color, refLine, band, unitLab
   }
 
   const coords = points.map((p, i) => [xPos(i, n, plotW, x0), yPos(p.y, yMax, plotH, y0)]);
+
+  const gradId = `grad-${svgId}`;
+  const defs = el("defs", {}, svg);
+  const grad = el("linearGradient", { id: gradId, x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+  el("stop", { offset: "0%", "stop-color": color, "stop-opacity": 0.22 }, grad);
+  el("stop", { offset: "100%", "stop-color": color, "stop-opacity": 0 }, grad);
+  const baseline = y0 + plotH;
+  const areaPath = "M" + coords.map((c) => c.join(",")).join(" L") +
+    ` L${coords[coords.length - 1][0]},${baseline} L${coords[0][0]},${baseline} Z`;
+  el("path", { d: areaPath, fill: `url(#${gradId})`, stroke: "none" }, svg);
+
   const path = "M" + coords.map((c) => c.join(",")).join(" L");
   el("path", { d: path, fill: "none", stroke: color, "stroke-width": 2, "stroke-linecap": "round" }, svg);
 
@@ -401,21 +412,6 @@ function renderHeatmap(runDays, dateRange) {
   });
 }
 
-function renderPrTable(records) {
-  const tbody = document.querySelector("#pr-table tbody");
-  if (!records.length) {
-    tbody.innerHTML = '<tr><td colspan="3" class="no-data">No records yet.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = records.map((r) => `
-    <tr>
-      <td>${r.label}</td>
-      <td>${r.display}</td>
-      <td>${r.date ? fmtDate(r.date) : "—"}</td>
-    </tr>
-  `).join("");
-}
-
 function renderHero(data) {
   const raceDate = new Date(data.athlete.race_date + "T00:00:00");
   const today = new Date();
@@ -524,7 +520,6 @@ async function main() {
   renderZoneChart(data.zone_distribution);
   renderPaceChart(data.pace_by_effort);
   renderHeatmap(data.run_days, data.date_range);
-  renderPrTable(data.personal_records);
 
   renderMap(data.latest_run);
 
@@ -532,6 +527,31 @@ async function main() {
   const rangeEnd = new Date(data.date_range.end + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
   document.getElementById("data-range").textContent = `Data covers ${rangeStart} – ${rangeEnd}`;
   document.getElementById("generated-at").textContent = `Data as of ${new Date(data.generated_at).toLocaleString("en-GB")}`;
+
+  setUpRevealAnimation();
+}
+
+function setUpRevealAnimation() {
+  const targets = document.querySelectorAll(".panel, .stat-tile");
+  if (!("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  targets.forEach((el, i) => {
+    el.classList.add("reveal");
+    el.style.transitionDelay = `${Math.min(i % 4, 3) * 60}ms`;
+    observer.observe(el);
+  });
 }
 
 main().catch((err) => {

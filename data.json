@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T13:06:03+02:00",
+  "generated_at": "2026-07-29T13:16:52+02:00",
   "date_range": {
     "start": "2026-03-11",
     "end": "2026-07-29"
@@ -3454,50 +3454,6 @@
       ]
     ]
   },
-  "personal_records": [
-    {
-      "label": "1 km",
-      "display": "3:46",
-      "activity_name": "Hoogeveen Hardlopen",
-      "date": "2024-03-29"
-    },
-    {
-      "label": "1 mile",
-      "display": "6:18",
-      "activity_name": "Hoogeveen - Erflanden Run",
-      "date": "2024-05-15"
-    },
-    {
-      "label": "5K",
-      "display": "19:52",
-      "activity_name": "De Wolden - Duo Sprint De Waterlelie 500m+5.2km",
-      "date": "2023-06-14"
-    },
-    {
-      "label": "10K",
-      "display": "44:06",
-      "activity_name": "Enschede - Enschede Marathon (Halve Marathon)",
-      "date": "2024-04-21"
-    },
-    {
-      "label": "Half marathon",
-      "display": "1:35:01",
-      "activity_name": "Enschede - Enschede Marathon (Halve Marathon)",
-      "date": "2024-04-21"
-    },
-    {
-      "label": "Marathon",
-      "display": "3:33:40",
-      "activity_name": "Amsterdam - TCS Amsterdam Marathon",
-      "date": "2023-10-15"
-    },
-    {
-      "label": "Longest run",
-      "display": "42.88 km",
-      "activity_name": "Amsterdam - TCS Amsterdam Marathon",
-      "date": "2023-10-15"
-    }
-  ],
   "acwr_history": [
     {
       "date": "2026-03-09",
